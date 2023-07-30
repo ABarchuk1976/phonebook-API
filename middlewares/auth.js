@@ -4,6 +4,7 @@ const { User } = require('../models/user');
 const { jwtToken } = require('../helpers');
 
 const auth = async (req, _, next) => {
+
 	const {authorization = ''} = req.headers;
 	const [bearer, token] = authorization.split(' ');
 
@@ -12,7 +13,7 @@ const auth = async (req, _, next) => {
 			throw HttpError(401)
 		}
 
-		const { id } = jwtToken.tokenVerify(token);
+		const { id } = jwtToken.tokenVerify(token).payload;
 		const user = await User.findById(id);
 
 		if (!user || !user?.token || user.token !== token) {

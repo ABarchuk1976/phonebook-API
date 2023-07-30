@@ -21,13 +21,13 @@ const contactsSchema = new Schema(
 
 const Contact = model('contact', contactsSchema);
 
-const addContactSchema = Joi.object({
+const dataContactSchema = Joi.object({
 	name: Joi.string().required(),
 	phone: Joi.string(),
 })
 
 const schemas = {
-	addContactSchema,
+	dataContactSchema,
 }
 
 module.exports = {schemas, Contact};

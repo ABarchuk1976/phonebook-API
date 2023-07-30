@@ -8,7 +8,9 @@ const add = (req, res) => {
 
 		const newContact = new Contact(body);
 
-		res.status(201).send(newContact);
+		newContact.save();
+
+		res.status(201).json(newContact);
 	} catch (error) {
 		res.status(500).json({ message: error.message });
 	}
