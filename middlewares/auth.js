@@ -1,7 +1,7 @@
 const { HttpError } = require('../helpers');
 
-const {User} = require('../models/user');
-const {jwtToken} = require('../helpers');
+const { User } = require('../models/user');
+const { jwtToken } = require('../helpers');
 
 const auth = async (req, _, next) => {
 	const {authorization = ''} = req.headers;

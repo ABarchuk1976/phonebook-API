@@ -7,7 +7,7 @@ const { User } = require('../../models');
 const login = async (req, res) => {
 	const { email, password } = req.body;
 
-	const user = User.findOne({email});
+	const user = await User.findOne({email});
 
 	const passwordVerification = bcrypt.compareSync(password, user?.password);
 

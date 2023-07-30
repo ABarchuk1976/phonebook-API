@@ -52,12 +52,12 @@ userSchema.post('validate', function (_, next) {
 const registerSchema = Joi.object({
 	name: Joi.string().required(),
 	email: Joi.string().email().required(),
-	password: Joi.string().min(7).required(),
+	password: Joi.string().min(6).required(),
 });
 
 const loginSchema = Joi.object({
 	email: Joi.string().email().required(),
-	password: Joi.string().min(7).required(),
+	password: Joi.string().min(6).required(),
 });
 
 const loginTokenSchema = Joi.object({
