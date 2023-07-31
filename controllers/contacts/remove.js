@@ -2,9 +2,9 @@ const { Contact } = require('../../models');
 
 const remove = async (req, res) => {
 	try {
-		const { _id } = req.params;
+		const { id } = req.params;
 
-	await Contact.findByIdAndDelete(_id);
+	await Contact.findByIdAndDelete(id);
 
 	res.status(200).json({massage: 'Contact deleted.'});
 	} catch (error) {
