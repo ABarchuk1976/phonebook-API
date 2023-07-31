@@ -13,6 +13,7 @@ const register = async (req, res) => {
 	}
 
 	const newUser = new User({name, email, password});
+	
 	await newUser.setPassword(password);
 
 	const token = jwtToken.tokenCreate(newUser._id);

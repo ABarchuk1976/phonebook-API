@@ -4,6 +4,7 @@ const app = require('./app');
 const { MONGO_URL, PORT = 3000 } = process.env;
 
 mongoose
+	.set("strictQuery", true)
 	.connect(MONGO_URL)
 	.then(()=> {
 		console.log("Mongo DB successfully connected..")

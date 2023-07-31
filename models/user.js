@@ -25,7 +25,7 @@ const userSchema = new Schema(
 			default: null,
 		},
 	},
-	{ versionKey: false, timestamps: true }
+	{ versionKey: false }
 );
 
 userSchema.methods.setPassword = async function(password) {
