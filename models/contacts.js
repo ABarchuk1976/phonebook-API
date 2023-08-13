@@ -7,7 +7,7 @@ const contactsSchema = new Schema(
 		type: String,
 		required: [true, 'Set name for contact'],
 	},
-	phone: {
+	number: {
 		type: String,
 		default: '',
 	},
@@ -23,7 +23,7 @@ const Contact = model('contact', contactsSchema);
 
 const dataContactSchema = Joi.object({
 	name: Joi.string().required(),
-	phone: Joi.string(),
+	number: Joi.string(),
 })
 
 const schemas = {
