@@ -24,7 +24,7 @@ route.post(
 	ctrlWrapper(ctrl.logout)
 )
 
-route.post(
+route.get(
 	"/current",
 	ctrlWrapper(ctrl.refreshToken)
 )
