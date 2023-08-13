@@ -10,7 +10,9 @@ const add = (req, res) => {
 
 		newContact.save();
 
-		res.status(201).json(newContact);
+		const {_id: id, name, phone: number, owner} = newContact;
+
+		res.status(201).json({id, name, number, owner});
 	} catch (error) {
 		res.status(500).json({ message: error.message });
 	}

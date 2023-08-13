@@ -6,7 +6,9 @@ const update = async (req, res) => {
 
 		const updatedContact = await Contact.findByIdAndUpdate(id, req.body, {new: true});
 
-		res.status(200).json(updatedContact);
+		const {_id: id, name, phone: number, owner} = updatedContact;
+
+		res.status(200).json({id, name, number, owner});
 	} catch (error) {
 		res.status(500).json({ message: error.message });
 	}
