@@ -25,7 +25,7 @@ route.post(
 )
 
 route.post(
-	"/jwtrefresh",
+	"/current",
 	ctrlWrapper(ctrl.refreshToken)
 )
 
