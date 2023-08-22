@@ -6,9 +6,9 @@ const refreshToken = async (req, res) => {
 
 	const token = jwtToken.tokenCreate(_id);
 
-	await User.findByIdAndUpdate(_id, {token}, {new: true});
+	const refreshedUser = await User.findByIdAndUpdate(_id, {token}, {new: true});
 
-	res.status(200).json({token});
+	res.status(200).json(refreshedUser);
 }
 
 module.exports = refreshToken;
