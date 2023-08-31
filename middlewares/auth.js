@@ -10,14 +10,14 @@ const auth = async (req, _, next) => {
 
 	try {
 		if (bearer !== 'Bearer' || !token) {
-			throw HttpError(401, "Bad authorization")
+			throw HttpError(402)
 		}
 
 		const { id } = jwtToken.tokenVerify(token).payload;
 		const user = await User.findById(id);
 
 		if (!user || !user?.token || user.token !== token) {
-			throw HttpError(401, `Bad Id: ${id}`)
+			throw HttpError(403)
 		}
 
 		req.user = user;
