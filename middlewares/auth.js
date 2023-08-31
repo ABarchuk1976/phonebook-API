@@ -10,14 +10,16 @@ const auth = async (req, _, next) => {
 
 	try {
 		if (bearer !== 'Bearer' || !token) {
-			throw HttpError(402)
+			throw HttpError(401)
 		}
-
+		
 		const { id } = jwtToken.tokenVerify(token).payload;
 		const user = await User.findById(id);
 
-		if (!user || !user?.token || user.token !== token) {
-			throw HttpError(403)
+		console.log("0. token, id and user: ", token, id, user.token);
+
+		if (!user || !user?.token) {
+			throw HttpError(401)
 		}
 
 		req.user = user;
