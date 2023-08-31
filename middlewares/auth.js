@@ -13,10 +13,13 @@ const auth = async (req, _, next) => {
 			throw HttpError(401)
 		}
 		
-		const { id } = jwtToken.tokenVerify(token).payload;
+		const { payload: { id }, exp } = jwtToken.tokenVerify(token);
+
 		const user = await User.findById(id);
 
-		console.log("0. token, id and user: ", token, id, user.token);
+		if (exp < 0) {
+			user.token = jwtToken.tokenCreate(id)
+		};
 
 		if (!user || !user?.token) {
 			throw HttpError(401)
