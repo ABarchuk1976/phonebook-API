@@ -26,7 +26,7 @@ route.post(
 
 route.get(
 	"/current",
-	ctrlWrapper(ctrl.refreshToken)
+	ctrlWrapper(ctrl.currentUser)
 )
 
 module.exports = route;

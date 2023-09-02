@@ -17,13 +17,14 @@ const auth = async (req, _, next) => {
 
 		const user = await User.findById(id);
 
-		if (exp < 0) {
-			user.token = jwtToken.tokenCreate(id)
-		};
-
-		if (!user || !user?.token) {
+		if (!user || !user?.token || user.token !== token) {
 			throw HttpError(401)
 		}
+
+		if (exp < 0) {
+			user.token = jwtToken.tokenCreate(id);
+			user.save();
+		};
 
 		req.user = user;
 
